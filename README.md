@@ -1,4 +1,4 @@
-# Team 67 Product Based Software Engineering - Project #1
+# Team 67 - Product Based Software Engineering Project #1
 
 Discussion Section: 24172	
 
