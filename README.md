@@ -3,7 +3,4 @@
 Discussion Section: 24172	
 
 Team Members:
-  Alex Cornide Huber
-  Ben Zipes
-  Jordan Hanley
-  Nikhil Giridharan
+  Alex Cornide Huber, Ben Zipes, Jordan Hanley, Nikhil Giridharan
