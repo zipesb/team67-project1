@@ -28,10 +28,10 @@ const CreatePage = () =>
 
         // Send HTTP request using axios
         axios.post('http://localhost:5000/create', newpage)
-            .then(res => {
-                console.log(res.data);
-                navigate('/view/'+res.data._id);
-            });
+            .then(res => 
+                //console.log(res.data)
+                navigate('/view/'+res.data._id)
+            );
 
         // Reset values
         //setPageName('');
