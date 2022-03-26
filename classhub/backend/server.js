@@ -13,11 +13,10 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-let Class = require('./class.model');
-
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true}
 );
+
 
 app.get("/getUsers", (req, res)=>{
   UserModel.find({}, (err, result)=>{
@@ -36,6 +35,7 @@ app.post("/createUser", async(req,res) => {
 
   res.json(user);
 })
+
 app.get("/getClasses", (req, res)=>{
   ClassModel.find({}, (err, result)=>{
       if(err){
@@ -46,9 +46,20 @@ app.get("/getClasses", (req, res)=>{
   } );
 });
 
+app.get("/getClass/:id", (req, res)=>{
+  let id = req.params.id;
+  ClassModel.findById(id, function(err, result) {
+      if(err){
+          res.json(err);
+      } else {
+          res.json(result);
+      }
+  } );
+});
+
 app.post("/createClass", async(req,res) => {
   const class1 = req.body;
-  const newClass = new ClassModel(user);
+  const newClass = new ClassModel(class1);
   await newClass.save();
 
   res.json(class1);
@@ -67,7 +78,7 @@ app.listen(port, () => {
 })
 
 
-// Endpoint to add a new class
+/* Endpoint to add a new class
 app.post("/create", async (req,resp) => {
     // Create a new Class document using the JSON of request's body
     let newclass = new Class(req.body);
@@ -91,4 +102,4 @@ app.get("/:id", async (req,resp) => {
       else
         resp.json(foundclass);
     });
-})
+})*/

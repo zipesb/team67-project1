@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+.create-page {
+  width: 50%;
+  border: 4px solid black;
+  padding: 12px;
+  font-family: 'Ubuntu', sans-serif;
+  font-style: normal;
+}
+
+.create-page input {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.create-page input[type="submit"] {
+  background-color: #000000;
+  color: white;
+  border: 3px solid rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.create-page input:hover {
+  border: 3px solid #555;
+}
