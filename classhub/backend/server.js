@@ -13,8 +13,6 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-let Class = require('./class.model');
-
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true}
 );
