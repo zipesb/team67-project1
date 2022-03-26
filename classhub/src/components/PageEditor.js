@@ -10,7 +10,7 @@ import axios from 'axios';
 export default class PageEditor extends Component {
     constructor(props) {
         super(props);
-        const html = this.props.initialContent;
+        const html = this.props.class.htmlContent;
         const contentBlock = htmlToDraft(html || "");
 
         if (contentBlock) {
@@ -32,7 +32,8 @@ export default class PageEditor extends Component {
     saveHTMLContent() {
         const { editorState } = this.state;
         const html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-        const body = {id: this.props.id, htmlContent: html}
+        const body = {id: this.props.class._id, htmlContent: html}
+        // need a standard uri
         axios.post('http://localhost:5000/updateClassContent', body).then(response => console.log(response))
     }
 
