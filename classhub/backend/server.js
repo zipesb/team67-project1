@@ -14,42 +14,60 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true}
+mongoose.connect(uri, { useNewUrlParser: true }
 );
 
-app.get("/getUsers", (req, res)=>{
-  UserModel.find({}, (err, result)=>{
-      if(err){
-          res.json(err);
-      } else {
-          res.json(result);
-      }
-  } );
+app.get("/getUsers", (req, res) => {
+  UserModel.find({}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
 });
 
-app.post("/createUser", async(req,res) => {
+app.post("/createUser", async (req, res) => {
   const user = req.body;
   const newUser = new UserModel(user);
   await newUser.save();
 
   res.json(user);
 })
-app.get("/getClasses", (req, res)=>{
-  ClassModel.find({}, (err, result)=>{
-      if(err){
-          res.json(err);
-      } else {
-          res.json(result);
-      }
-  } );
+app.get("/getClasses", (req, res) => {
+  ClassModel.find({}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
 });
 
-app.post("/createClass", async(req,res) => {
+app.post("/createClass", async (req, res) => {
   const class1 = req.body;
   const newClass = new ClassModel(user);
   await newClass.save();
 
   res.json(class1);
+})
+
+app.post("/updateClassContent", async (req, res) => {
+  const id = new mongoose.Types.ObjectId(req.body.id);
+  const content = req.body.htmlContent;
+  //console.log(id);
+  //console.log(content);
+  ClassModel.findByIdAndUpdate(id, { "htmlContent": content }, function (err, result) {
+    if (err) {
+      console.log(err);
+      res.send(err);
+      
+    }
+    else {
+      console.log(result);
+      res.send(result);
+    }
+  })
 })
 
 
@@ -61,5 +79,5 @@ connection.once('open', () => {
 })
 
 app.listen(port, () => {
-    console.log(`Server running on port: ${port}`);
+  console.log(`Server running on port: ${port}`);
 })

@@ -1,0 +1,31 @@
+const mongoose = require('mongoose');
+
+const ClassSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    htmlContent: {
+        type: String,
+        required: true,
+    },
+    owner: {
+        type: String,
+        required: true,
+    },
+    editors: {
+        type: [String],
+        required: true,
+    },
+    members: {
+        type: [String],
+        required: true
+    }
+}) 
+
+const ClassModel = mongoose.model("class", ClassSchema, "classes");
+module.exports= ClassModel;
