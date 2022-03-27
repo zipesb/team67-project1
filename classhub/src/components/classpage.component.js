@@ -10,6 +10,7 @@ const ClassPage = () =>
     const [ pageowner, setOwner ] = useState('');
     const [ pageeditors, setEditors ] = useState([]);
     const [ pagemembers, setMembers ] = useState([]);
+    const [ pageresources, setResources ] = useState([]);
 
     const { id } = useParams();
 
@@ -24,6 +25,7 @@ const ClassPage = () =>
                 setOwner(resp.data.owner);
                 setEditors(resp.data.editors);
                 setMembers(resp.data.members);
+                setResources(resp.data.resources);
             })
             .catch(function(err) {
                 console.log(err);

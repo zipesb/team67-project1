@@ -48,7 +48,7 @@ app.get("/getClasses", (req, res)=>{
 });
 
 app.get("/getClass/:id", (req, res)=>{
-  let id = req.params.id;
+  const id = req.params.id;
   ClassModel.findById(id, function(err, result) {
       if(err){
           res.json(err);
@@ -59,11 +59,10 @@ app.get("/getClass/:id", (req, res)=>{
 });
 
 app.post("/createClass", async(req,res) => {
-  const class1 = req.body;
-  const newClass = new ClassModel(class1);
+  const newClass = new ClassModel(req.body);
   await newClass.save();
 
-  res.json(class1);
+  res.json(newClass);
 })
 
 app.post("/updateClassContent", async (req, res) => {

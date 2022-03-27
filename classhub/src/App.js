@@ -26,7 +26,7 @@ function App() {
        </header>*/}
        <Routes>
          <Route path="/create" exact element={<CreatePage/>} />
-         <Route path="/view/:id" element={<ClassPage/>} />
+         <Route path="/class/:id" element={<ClassPage/>} />
        </Routes>
       </div>
     </Router>

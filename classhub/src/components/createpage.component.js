@@ -12,6 +12,7 @@ const CreatePage = () =>
     const [ pageowner, setOwner ] = useState('ownerplaceholder'); //placeholder
     const [ pageeditors, setEditors ] = useState([]);
     const [ pagemembers, setMembers ] = useState([]);
+    const [ pageresources, setResources ] = useState([]);
 
     const navigate = useNavigate();
 
@@ -55,13 +56,14 @@ const CreatePage = () =>
             htmlContent: pagehtmlContent,
             owner: pageowner,
             editors: pageeditors,
-            members: pagemembers
+            members: pagemembers,
+            resources: pageresources                // < ^ ^ redundant but w/e
         }
 
         // Send HTTP request using axios
         axios.post('http://localhost:5000/createClass', newpage)
             .then(res => 
-                navigate('/view/'+res.data._id) //maybe move out of callback
+                navigate('/class/'+res.data._id)
             );
         
         // Reset values
