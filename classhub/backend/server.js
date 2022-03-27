@@ -1,11 +1,13 @@
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const UserModel = require('./models/Users');
 const ClassModel = require('./models/Class');
-
+const resourceRoutes = require('./routes/resource');
 
 require('dotenv').config();
+
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,21 +16,20 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true}
+mongoose.connect(uri, { useNewUrlParser: true }
 );
 
-
-app.get("/getUsers", (req, res)=>{
-  UserModel.find({}, (err, result)=>{
-      if(err){
-          res.json(err);
-      } else {
-          res.json(result);
-      }
-  } );
+app.get("/getUsers", (req, res) => {
+  UserModel.find({}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
 });
 
-app.post("/createUser", async(req,res) => {
+app.post("/createUser", async (req, res) => {
   const user = req.body;
   const newUser = new UserModel(user);
   await newUser.save();
@@ -65,8 +66,24 @@ app.post("/createClass", async(req,res) => {
   res.json(class1);
 })
 
+app.post("/updateClassContent", async (req, res) => {
+  const id = new mongoose.Types.ObjectId(req.body.id);
+  const content = req.body.htmlContent;
+  ClassModel.findByIdAndUpdate(id, { "htmlContent": content }, function (err, result) {
+    if (err) {
+      console.log(err);
+      res.send(err);
+      
+    }
+    else {
+      console.log(result);
+      res.send(result);
+    }
+  })
+})
 
 
+app.use('/api/resource', resourceRoutes);
 
 const connection = mongoose.connection;
 connection.once('open', () => {
@@ -74,32 +91,5 @@ connection.once('open', () => {
 })
 
 app.listen(port, () => {
-    console.log(`Server running on port: ${port}`);
+  console.log(`Server running on port: ${port}`);
 })
-
-
-/* Endpoint to add a new class
-app.post("/create", async (req,resp) => {
-    // Create a new Class document using the JSON of request's body
-    let newclass = new Class(req.body);
-    // Save the document to database
-    newclass.save()
-      // Callback functions
-      .then(newclass => {
-        resp.status(200).send('Class added succesfully');
-      })
-      .catch(err => {
-        resp.status(400).send('Failed to add class');
-      });
-});
-
-// Endpoint to get an existing class' info
-app.get("/:id", async (req,resp) => {
-    let id = req.params.id;
-    Class.findById(id, function(err, foundclass) {
-      if(!foundclass)
-        resp.status(404).send('Class data not found');
-      else
-        resp.json(foundclass);
-    });
-})*/

@@ -24,6 +24,13 @@ const ClassSchema = new mongoose.Schema({
     members: {
         type: [String],
         required: true
+    },
+    resources: {
+        type: [{
+            id: String,
+            filename: String
+        }],
+        required: false
     }
 }) 
 
