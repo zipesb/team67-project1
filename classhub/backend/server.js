@@ -1,11 +1,13 @@
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const UserModel = require('./models/Users');
 const ClassModel = require('./models/Class');
-
+const resourceRoutes = require('./routes/resource');
 
 require('dotenv').config();
+
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -55,8 +57,6 @@ app.post("/createClass", async (req, res) => {
 app.post("/updateClassContent", async (req, res) => {
   const id = new mongoose.Types.ObjectId(req.body.id);
   const content = req.body.htmlContent;
-  //console.log(id);
-  //console.log(content);
   ClassModel.findByIdAndUpdate(id, { "htmlContent": content }, function (err, result) {
     if (err) {
       console.log(err);
@@ -71,7 +71,7 @@ app.post("/updateClassContent", async (req, res) => {
 })
 
 
-
+app.use('/api/resource', resourceRoutes);
 
 const connection = mongoose.connection;
 connection.once('open', () => {
