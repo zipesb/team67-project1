@@ -54,7 +54,7 @@
   box-sizing: border-box;
 }
 
-.create-page input[type="submit"] {
+.create-page button {
   background-color: #000000;
   color: white;
   border: 3px solid rgb(0, 0, 0);

@@ -8,8 +8,8 @@ const CreatePage = () =>
 {
     const [ pagename, setName ] = useState('');
     const [ pagedescription, setDescription ] = useState('');
-    const [ pagehtmlContent, setHtmlContent ] = useState('');
-    const [ pageowner, setOwner ] = useState(''); //placeholder
+    const [ pagehtmlContent, setHtmlContent ] = useState('htmlcontentplaceholder'); //placeholder
+    const [ pageowner, setOwner ] = useState('ownerplaceholder'); //placeholder
     const [ pageeditors, setEditors ] = useState([]);
     const [ pagemembers, setMembers ] = useState([]);
 
@@ -39,13 +39,13 @@ const CreatePage = () =>
         if (e.key === "Enter" && e.target.value !== "") {
             setMembers([...pagemembers, e.target.value]);
             e.target.value = "";
-        }
-}
+        }   
+    }
     const onRemoveMember = (index) => {
         setMembers([...pagemembers.filter(member => pagemembers.indexOf(member) !== index)]);
     }
 
-    const onSubmit = (e) => {
+    const onCreate = (e) => {
         e.preventDefault();
 
         // Store new paga data in JSON
@@ -72,7 +72,7 @@ const CreatePage = () =>
     return (
         <div className="create-page">
             <h1>Create a new Class</h1>
-            <form action="">
+            <form>
                 <input  type="text" 
                         placeholder="Class Name.." 
                         value={pagename} 
@@ -82,38 +82,36 @@ const CreatePage = () =>
                         placeholder="Class Description.." 
                         value={pagedescription} 
                         onChange={onChangeDescription} />
-                    <ul>
-                        {pageeditors.map((editor, index) => (
-                            <li key={index}>
-                                <span>{editor}</span>
-                                <i className="material-icons"
-                                onClick={() => onRemoveEditor(index)}>close</i>
-                            </li>
-                        ))}
-                    </ul>
-                    <input
-                        type="text"
-                        placeholder="Add editors"
-                        onKeyUp={onAddEditor}
-                    />
-                    <ul>
-                        {pagemembers.map((member, index) => (
-                            <li key={index}>
-                                <span>{member}</span>
-                                <i className="material-icons"
-                                onClick={() => onRemoveMember(index)}>close</i>
-                            </li>
-                        ))}
-                    </ul>
-                    <input
-                        type="text"
-                        placeholder="Add members"
-                        onKeyUp={onAddMember}
-                    />
-                <input  type="submit"
-                        value="Create Page"
-                        onClick={onSubmit}
+                <ul>
+                    {pageeditors.map((editor, index) => (
+                        <li key={index}>
+                            <span>{editor}</span>
+                            <i className="material-icons"
+                            onClick={() => onRemoveEditor(index)}>close</i>
+                        </li>
+                    ))}
+                </ul>
+                <input
+                    type="text"
+                    placeholder="Add editors"
+                    onKeyUp={onAddEditor}
                 />
+                <ul>
+                    {pagemembers.map((member, index) => (
+                        <li key={index}>
+                            <span>{member}</span>
+                            <i className="material-icons"
+                            onClick={() => onRemoveMember(index)}>close</i>
+                        </li>
+                    ))}
+                </ul>
+                <input
+                    type="text"
+                    placeholder="Add members"
+                    onKeyUp={onAddMember}
+                />
+                <button type="button" 
+                        onClick={onCreate}>Create</button>
             </form>
         </div>
     )
