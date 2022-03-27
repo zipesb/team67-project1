@@ -1,8 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const bodyParser = require("body-parser");
 const UserModel = require('./models/Users');
 const ClassModel = require('./models/Class');
+const passport = require("passport");
+const users = require("./routes/api/users");
 
 
 require('dotenv').config();
@@ -16,6 +19,14 @@ app.use(express.json());
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true }
 );
+
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
 
 app.get("/getUsers", (req, res) => {
   UserModel.find({}, (err, result) => {
@@ -70,8 +81,12 @@ app.post("/updateClassContent", async (req, res) => {
   })
 })
 
-
-
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+// Routes
+app.use("/api/users", users);
 
 const connection = mongoose.connection;
 connection.once('open', () => {
