@@ -70,8 +70,8 @@ const CreatePage = () =>
     //Styles
     const stylingObject = {
         div: {
-            width: "50%",
-            border: "4px solid black",
+            margin: "auto",
+            width: "75%",
             padding: "12px",
             fontFamily: "'Ubuntu', sans-serif",
             fontStyle: "normal"
