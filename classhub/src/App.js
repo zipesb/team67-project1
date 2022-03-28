@@ -1,24 +1,21 @@
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+
 import logo from './logo.svg';
 import './App.css';
 
+import CreatePage from "./components/CreatePage";
+import ClassPage from "./components/ClassPage";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+       <Routes>
+         <Route path="/create" exact element={<CreatePage/>} />
+         <Route path="/class/:id" element={<ClassPage/>} />
+       </Routes>
+      </div>
+    </Router>
   );
 }
 

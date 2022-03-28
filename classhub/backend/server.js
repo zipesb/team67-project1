@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -36,22 +35,33 @@ app.post("/createUser", async (req, res) => {
 
   res.json(user);
 })
-app.get("/getClasses", (req, res) => {
-  ClassModel.find({}, (err, result) => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(result);
-    }
-  });
+
+app.get("/getClasses", (req, res)=>{
+  ClassModel.find({}, (err, result)=>{
+      if(err){
+          res.json(err);
+      } else {
+          res.json(result);
+      }
+  } );
 });
 
-app.post("/createClass", async (req, res) => {
-  const class1 = req.body;
-  const newClass = new ClassModel(user);
+app.get("/getClass/:id", (req, res)=>{
+  const id = req.params.id;
+  ClassModel.findById(id, function(err, result) {
+      if(err){
+          res.json(err);
+      } else {
+          res.json(result);
+      }
+  } );
+});
+
+app.post("/createClass", async(req,res) => {
+  const newClass = new ClassModel(req.body);
   await newClass.save();
 
-  res.json(class1);
+  res.json(newClass);
 })
 
 app.post("/updateClassContent", async (req, res) => {
