@@ -35,6 +35,7 @@ export default class PageEditor extends Component {
         const body = {id: this.props.class._id, htmlContent: html}
         // need a standard uri
         axios.post('http://localhost:5000/updateClassContent', body).then(response => console.log(response))
+        this.props.onclick();
     }
 
     render() {
