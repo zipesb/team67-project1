@@ -1,0 +1,72 @@
+.NavbarItems {
+    background: #818881;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2rem calc((100vw - 1000px) / 2);
+    z-index: 12;
+  /* Third Nav */
+  /* justify-content: flex-start; */
+    }
+  
+  .NavbarItems h1 {
+    margin-right: 10vw;
+    color: white;
+    font-size: 25px;
+  }
+
+  .navbar-ul {
+    width: 80%;
+    float: left;
+    list-style: none;
+    margin: 0px;
+    padding: 0;
+  }
+  li {
+    display: inline;
+    list-style: none;
+    font-size: 18px;
+    padding: 10px;
+    line-height: 80px;
+  }
+  .nav-links {
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-links:hover {
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color: #808080;
+  }
+
+  .nav-links-btn {
+    border-radius: 4px;
+    background: #acd0a6;
+    padding: 1vmin 2vmin;
+    color: #000000;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    /* Second Nav */
+    margin-left: 10vw;
+  }
+
+  .nav-links-btn:hover {
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color: #808080;
+  }
+
+  li:hover {
+    background-color: white;
+  }
+  li:hover .nav-links {
+    color: black;
+  }
+  li:hover .nav-links-mobile {
+    color: black;
+  }

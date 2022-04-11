@@ -5,12 +5,14 @@ import './App.css';
 
 import CreatePage from "./components/CreatePage";
 import ClassPage from "./components/ClassPage";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <Router>
       <div className="App">
-       <Routes>
+        <Navbar/>
+        <Routes>
          <Route path="/create" exact element={<CreatePage/>} />
          <Route path="/class/:id" element={<ClassPage/>} />
        </Routes>
