@@ -14,7 +14,7 @@ const Navbar = () => {
         <li><a className="nav-links" href={path+"create"}>Create Class</a></li>
         <li><a className="nav-links" href={path+"search"}>Search</a></li>
       </ul>
-      <a className="nav-links-btn" href={path+"signin"}>Sign-in</a>
+      <a className="nav-links-btn" href={path+"login"}>Sign-in</a>
     </div>
   );
 }

@@ -2,13 +2,14 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Axios from "axios";
 import React, { useEffect, useState } from 'react'; // Hooks for functional components
 
-import logo from './logo.svg';
 import './App.css';
 
 import CreatePage from "./components/CreatePage";
 import ClassPage from "./components/ClassPage";
 import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
 
@@ -30,7 +31,8 @@ function App() {
          <Route path="/class/:id" element={<ClassPage/>} />
          <Route path="/search" element={<SearchBar placeholder = "Enter class name...." data = {listOfClasses} />} />
          <Route path="/dashboard" exact element={<h1>really cool dashboard placeholder</h1>} />
-         <Route path="/signin" exact element={<h1>signin placeholder :)</h1>} />
+         <Route path="/login" element={<Login />} />
+         <Route path="/register" element={<Register />} />
        </Routes>
       </div>
     </Router>
