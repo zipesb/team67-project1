@@ -108,7 +108,6 @@ router.post('/upload/', uploadMiddleware, async (req, res) => {
     deleteResource(id);
     return res.status(400).send('file may not exceed 5mb');
   }
-  console.log("\n\n\n\n\n\nHERE")
   console.log(req.body.class_id);
   // attempt to add reference to file in class collection
   const classID = new mongoose.Types.ObjectId(req.body.class_id);

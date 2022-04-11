@@ -34,12 +34,18 @@ export default class ResourceView extends Component {
     }
 
     render() {
-        const listItems = this.props.class.resources.map(
+        var listItems;
+        if(this.props.class.resources != null) {
+         listItems = this.props.class.resources.map(
             function (e) {
                 const link = "http://localhost:5000/api/resource/" + e.id;
                 return <li><a href={link}>{e.filename}</a></li>
             }
+        
         );
+        } else {
+            listItems = <div></div>;
+        }
 
         const Button = styled.button`
         background-color: black;
