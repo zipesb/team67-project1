@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
+import ResourceView from "./ResourceView";
 
 import PageEditor from "./PageEditor"
 import PageViewer from "./PageViewer"
@@ -35,6 +36,8 @@ const ClassPage = () =>
         <div>
             {isEditing  ? <PageEditor class={pageclass} onclick={toggleEdit}/> 
                         : <PageViewer class={pageclass} onclick={toggleEdit}/>}
+
+<ResourceView class={pageclass}/>
         </div>
     )
 
