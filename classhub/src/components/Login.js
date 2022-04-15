@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+
 class Login extends Component {
   constructor() {
     super();
@@ -19,7 +21,9 @@ const userData = {
       password: this.state.password
     };
 console.log(userData);
+axios.post('http://localhost:5000/api/users/login', userData).then(response => console.log(response));
   };
+  
 render() {
     const { errors } = this.state;
 return (

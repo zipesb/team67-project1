@@ -10,6 +10,7 @@ import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import LandingPage from "./components/LandingPage";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <div className="App">
         <Navbar/>
         <Routes>
+         <Route path="/" exact element={<LandingPage/>} />
          <Route path="/create" exact element={<CreatePage/>} />
          <Route path="/class/:id" element={<ClassPage/>} />
          <Route path="/search" element={<SearchBar placeholder = "Enter class name...." data = {listOfClasses} />} />
