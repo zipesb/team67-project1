@@ -1,0 +1,22 @@
+.CoolBlue {
+    background: linear-gradient(180deg, #27A3A7 0%, #365580 100%);
+    display: flex;
+}
+
+.CoolBlue h1 {
+    color: white;
+}
+
+.coolblue-btn {
+    border: 4px solid rgba(255, 255, 255, 1);
+    border-radius: 30px;
+    background: linear-gradient(
+        0deg,
+        rgba(31, 177, 207, 1) 0%,
+        rgba(37, 76, 204, 1) 100%
+    );
+    color: rgba(255, 255, 255, 0.5);
+    box-shadow: 4px 5px 0px 0px rgba(0, 0, 0, 0.3);
+    padding: 5%;
+}
+
