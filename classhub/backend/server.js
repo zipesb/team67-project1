@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const bodyParser = require("body-parser");
 const UserModel = require('./models/Users');
 const ClassModel = require('./models/Class');
 const resourceRoutes = require('./routes/resource');
@@ -17,6 +18,14 @@ app.use(express.json());
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true }
 );
+
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
 
 app.get("/getUsers", (req, res) => {
   UserModel.find({}, (err, result) => {
