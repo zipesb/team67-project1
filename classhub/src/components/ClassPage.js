@@ -6,6 +6,7 @@ import io from "socket.io-client"
 import PageEditor from "./PageEditor"
 import PageViewer from "./PageViewer"
 import Chatbox from "./Chatbox";
+import StarRating from "./StarRating";
 
 const ClassPage = () =>
 {
@@ -49,7 +50,8 @@ const ClassPage = () =>
                         : <PageViewer class={pageclass} onclick={toggleEdit} allowEdit={isEditor}/>}
 
             <ResourceView class={pageclass} />
-            <Chatbox socket={socket} username={loggedInUser} class_id={id} />
+            <Chatbox socket={socket} username={localStorage.getItem("username")} class_id={id} />
+            <StarRating class = {pageclass}/>
         </div>
     )
 
