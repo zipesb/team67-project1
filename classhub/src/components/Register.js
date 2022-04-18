@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+
 class Register extends Component {
   constructor() {
     super();
     this.state = {
       name: "",
       email: "",
+      username: "",
       password: "",
       password2: "",
       errors: {}
@@ -19,21 +22,21 @@ onSubmit = e => {
 const newUser = {
       name: this.state.name,
       email: this.state.email,
+      username: this.state.username,
       password: this.state.password,
       password2: this.state.password2
     };
 console.log(newUser);
+axios.post('http://localhost:5000/api/users/register', newUser).then(response => console.log(response));
   };
+
 render() {
     const { errors } = this.state;
 return (
       <div className="container">
         <div className="row">
           <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link>
+            <Link to="/">Back to home</Link>
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4>
                 <b>Register</b> below
@@ -52,6 +55,16 @@ return (
                   type="text"
                 />
                 <label htmlFor="name">Name</label>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.username}
+                  error={errors.username}
+                  id="username"
+                  type="text"
+                />
+                <label htmlFor="username">Username</label>
               </div>
               <div className="input-field col s12">
                 <input

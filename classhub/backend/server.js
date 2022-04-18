@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const UserModel = require('./models/Users');
 const ClassModel = require('./models/Class');
 const resourceRoutes = require('./routes/resource');
+const passport = require("passport");
+const users = require("./routes/api/users");
 
 require('dotenv').config();
 
@@ -89,6 +91,12 @@ app.post("/updateClassContent", async (req, res) => {
   })
 })
 
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+// Routes
+app.use("/api/users", users);
 
 app.use('/api/resource', resourceRoutes);
 
