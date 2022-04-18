@@ -45,8 +45,8 @@ const ClassPage = () =>
 
     return (
         <div>
-            {isEditing ? <PageEditor class={pageclass} onclick={toggleEdit} />
-                : <PageViewer class={pageclass} onclick={toggleEdit} />}
+            {isEditing  ? <PageEditor class={pageclass} onclick={toggleEdit} />
+                        : <PageViewer class={pageclass} onclick={toggleEdit} allowEdit={isEditor}/>}
 
             <ResourceView class={pageclass} />
             <Chatbox socket={socket} username={loggedInUser} class_id={id} />

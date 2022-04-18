@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'; // Hooks for functional components
 import axios from 'axios'; // Cleaner way of sending http requests
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
+import '../styles/CoolBlue.css';
 
 const CreatePage = () =>
 {
@@ -10,6 +12,8 @@ const CreatePage = () =>
     const [ pageowner, setOwner ] = useState('ownerplaceholder'); //placeholder
     const [ pageeditors, setEditors ] = useState([]);
     const [ pageresources, setResources ] = useState([]);
+
+    const loggedInUser = localStorage.getItem("username");
 
     const navigate = useNavigate();
 
@@ -42,9 +46,9 @@ const CreatePage = () =>
             name: pagename,
             description: pagedescription,
             htmlContent: pagehtmlContent,
-            owner: pageowner,
-            editors: pageeditors,
-            resources: pageresources                // < ^ ^ redundant but w/e
+            owner: loggedInUser,
+            editors: pageeditors.concat(loggedInUser),
+            resources: pageresources
         }
 
         axios.post('http://localhost:5000/createClass', newpage)
@@ -53,7 +57,7 @@ const CreatePage = () =>
             );
     }
 
-    //Styles
+    //Styles (YEAH I know this is bad and weird but I had it in a separate css before and now I'm too lazy to put it back)
     const stylingObject = {
         div: {
             margin: "auto",
@@ -124,8 +128,14 @@ const CreatePage = () =>
     }
 
     //TODO: clean this up
+    if(!loggedInUser)
+        return (
+            <div className="CoolBlue">
+                <div>Not logged in, please <Link to="/login" style={{ color: 'blue' }}>log in</Link> or <Link to="/register" style={{ color: 'blue' }}>register</Link></div>
+            </div>
+        );
     return (
-        <div style={stylingObject.div}>
+        <div style={stylingObject.div} className="CoolBlue">
             <h1 style={{fontSize: "6vh"}}>Create New Class</h1>
             <form>
                 <h2 style={stylingObject.section}>Class Info</h2>

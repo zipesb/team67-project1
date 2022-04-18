@@ -52,8 +52,8 @@ const PageViewer = (props) =>
             <h3 style={styles.desc}>{props.class.description}</h3>
             <p  style={styles.content}
                 dangerouslySetInnerHTML={{ __html: props.class.htmlContent }}/>
-            <button style={styles.editbutton}
-                    onClick={props.onclick}>Edit Content</button>
+            {props.allowEdit    ? <button style={styles.editbutton} onClick={props.onclick}>Edit Content</button>
+                                : <h4>You do not have permission to edit {props.class.name}</h4> }
         </div>
     </>
     )

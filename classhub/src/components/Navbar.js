@@ -36,8 +36,9 @@ const Navbar = () => {
         <li><a className="nav-links" href={path+"create"}>Create Class</a></li>
         <li><a className="nav-links" href={path+"search"}>Search</a></li>
       </ul>
-      Welcome {loggedInUser}!
-      <button onClick={handleLogout}>Sign-out</button>
+      {loggedInUser ? <a className="nav-links-btn" onClick={handleLogout} href={path+"/"}>Sign-out</a>
+                    : <a className="nav-links-btn" href={path+"login"}>Sign-in</a> }
+
     </div>
   );
 }
