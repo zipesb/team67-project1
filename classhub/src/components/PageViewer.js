@@ -8,6 +8,7 @@ const PageViewer = (props) =>
     const styles = {
         header: {
             display: "inline-block",
+            marginTop: "5vh",
             paddingTop: "1vh",
             width: "90%",
             /*float: "right",  //for adding the dashboard on the left*/
@@ -15,10 +16,12 @@ const PageViewer = (props) =>
         },
         name: {
             margin: "0px",
+            color: "white",
             fontSize: "8vh"
         },
         desc: {
             margin: "0px",
+            color: "white",
             paddingBottom: "1vh",
             fontSize: "2vh"
         },
@@ -28,7 +31,7 @@ const PageViewer = (props) =>
             paddingRight: "1vw",
             paddingTop: ".2vh",
             paddingBottom: ".2vh",
-            backgroundColor: "#c5c5c5", 
+            backgroundColor: "#ffffff", 
             textAlign: "left",
             fontSize: "2.5vh",
             fontFamily: "'Ubuntu', sans-serif",
@@ -46,7 +49,6 @@ const PageViewer = (props) =>
     }
 
     return (
-    <>
         <div style={styles.header}>
             <h1 style={styles.name}>Welcome to {props.class.name}!</h1>
             <h3 style={styles.desc}>{props.class.description}</h3>
@@ -55,7 +57,6 @@ const PageViewer = (props) =>
             {props.allowEdit    ? <button style={styles.editbutton} onClick={props.onclick}>Edit Content</button>
                                 : <h4>You do not have permission to edit {props.class.name}</h4> }
         </div>
-    </>
     )
 }
 

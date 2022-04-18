@@ -45,9 +45,9 @@ const ClassPage = () =>
 
 
     return (
-        <div>
+        <div style={{ background: "linear-gradient(180deg, #27A3A7 0%, #365580 100%)", minHeight: "100vh", height: "auto" }}>
             {isEditing  ? <PageEditor class={pageclass} onclick={toggleEdit} />
-                        : <PageViewer class={pageclass} onclick={toggleEdit} allowEdit={isEditor}/>}
+                        : <PageViewer style={{backgroundColor: "white"}} class={pageclass} onclick={toggleEdit} allowEdit={isEditor}/>}
 
             <ResourceView class={pageclass} />
             <Chatbox socket={socket} username={localStorage.getItem("username")} class_id={id} />

@@ -50,7 +50,7 @@ export default class PageEditor extends Component {
             cursor: pointer;
             `;
         return (
-            <div>
+            <div style={{background: "white"}}>
                 <Button onClick={this.saveHTMLContent.bind(this)}>Save</Button>
                 <Editor
                     editorState={editorState}

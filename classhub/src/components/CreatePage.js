@@ -64,6 +64,7 @@ const CreatePage = () =>
             width: "75%",
             padding: "12px",
             fontFamily: "'Ubuntu', sans-serif",
+            color: "white",
             fontStyle: "normal"
         },
         desc: {
@@ -130,12 +131,13 @@ const CreatePage = () =>
     //TODO: clean this up
     if(!loggedInUser)
         return (
-            <div className="CoolBlue">
-                <div>Not logged in, please <Link to="/login" style={{ color: 'blue' }}>log in</Link> or <Link to="/register" style={{ color: 'blue' }}>register</Link></div>
-            </div>
+        <div style={{ justifyContent: 'center', minHeight: "100vh", height: "100vh" }} className="CoolBlue">
+            <div>Not logged in, please <Link to="/login" style={{ color: 'blue' }}>log in</Link> or <Link to="/register" style={{ color: 'blue' }}>register</Link></div>
+        </div>
         );
     return (
-        <div style={stylingObject.div} className="CoolBlue">
+        <div style={{ justifyContent: 'center', minHeight: "100vh", height: "100vh" }} className="CoolBlue">
+        <div style={stylingObject.div}>
             <h1 style={{fontSize: "6vh"}}>Create New Class</h1>
             <form>
                 <h2 style={stylingObject.section}>Class Info</h2>
@@ -176,6 +178,7 @@ const CreatePage = () =>
                         type="button" 
                         onClick={onCreate}>Create Class</button>
             </form>
+        </div>
         </div>
     )
 
