@@ -7,9 +7,8 @@ const ClassModel = require('./models/Class');
 const resourceRoutes = require('./routes/resource');
 
 require('dotenv').config();
-
-
 const app = express();
+const socketServer = require("./socket_server")(app);
 const port = process.env.PORT || 5000;
 
 app.use(cors());
@@ -100,3 +99,7 @@ connection.once('open', () => {
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 })
+
+socketServer.listen(5001, () => {
+  console.log("Socket.io Server Running");
+});
