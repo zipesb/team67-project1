@@ -2,22 +2,29 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import ResourceView from "./ResourceView";
-
+import io from "socket.io-client"
 import PageEditor from "./PageEditor"
 import PageViewer from "./PageViewer"
+import Chatbox from "./Chatbox";
+import StarRating from "./StarRating";
 
-const ClassPage = () =>
-{
-    const [ pageclass, setClass ] = useState({});
-    const [ isEditing, setEditing ] = useState(false);
+const ClassPage = () => {
+    const socket = io.connect("http://localhost:5001");
+    const [pageclass, setClass] = useState({});
+    const [isEditing, setEditing] = useState(false);
     const { id } = useParams();
 
+
+    const joinChat = () => {
+        socket.emit("join_chat", id);
+    };
+
     const loadClass = () => {
-        axios.get('http://localhost:5000/getClass/'+id)
+        axios.get('http://localhost:5000/getClass/' + id)
             .then(resp => {
                 setClass(resp.data)
             })
-            .catch(function(err) {
+            .catch(function (err) {
                 console.log(err);
             })
     }
@@ -29,15 +36,18 @@ const ClassPage = () =>
 
     useEffect(() => {
         loadClass(); //to initialize class data
-     }, []);
+        joinChat();
+    }, []);
 
 
     return (
         <div>
-            {isEditing  ? <PageEditor class={pageclass} onclick={toggleEdit}/> 
-                        : <PageViewer class={pageclass} onclick={toggleEdit}/>}
+            {isEditing ? <PageEditor class={pageclass} onclick={toggleEdit} />
+                : <PageViewer class={pageclass} onclick={toggleEdit} />}
 
-<ResourceView class={pageclass}/>
+            <ResourceView class={pageclass} />
+            <Chatbox socket={socket} username={localStorage.getItem("username")} class_id={id} />
+            <StarRating class = {pageclass}/>
         </div>
     )
 

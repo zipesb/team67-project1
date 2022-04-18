@@ -9,9 +9,8 @@ const passport = require("passport");
 const users = require("./routes/api/users");
 
 require('dotenv').config();
-
-
 const app = express();
+const socketServer = require("./socket_server")(app);
 const port = process.env.PORT || 5000;
 
 app.use(cors());
@@ -90,6 +89,52 @@ app.post("/updateClassContent", async (req, res) => {
     }
   })
 })
+app.post('/updateRating', async(req, res) =>{
+  const newRating = req.body.newRating
+  const id = req.body.id
+   
+  await sleep (1000)
+  
+    ClassModel.findByIdAndUpdate(id, {"rating" : newRating}, function(error, result){
+     if (error) {
+       console.log("error",error);
+       res.send(error);
+       
+     }
+     else {
+
+     }
+
+     //  ratingToUpdate.rating = [...ratingToUpdate.rating, newRating];
+     //  ratingToUpdate.save()
+    })
+  res.send("updated");
+})
+
+
+ app.post('/updateRatingAvg', async(req, res) =>{
+  const newRating = req.body.newRating
+  const id = req.body.id
+  
+  await sleep (1000)
+ 
+    ClassModel.findByIdAndUpdate(id, {"ratingAvg" : newRating}, function(error, result){
+     if (error) {
+       console.log("error",error);
+       res.send(error);
+      
+     }
+     else {
+     }
+
+     //  ratingToUpdate.rating = [...ratingToUpdate.rating, newRating];
+     //  ratingToUpdate.save()
+    }) 
+  res.send("updated");
+})
+
+
+
 
 app.get("/getOwnedClasses", (req, res)=>{
   ClassModel.find({owner: req.query.owner})
@@ -114,3 +159,7 @@ connection.once('open', () => {
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 })
+
+socketServer.listen(5001, () => {
+  console.log("Socket.io Server Running");
+});
