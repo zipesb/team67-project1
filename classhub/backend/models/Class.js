@@ -21,10 +21,6 @@ const ClassSchema = new mongoose.Schema({
         type: [String],
         required: true,
     },
-    members: {
-        type: [String],
-        required: true
-    },
     resources: {
         type: [{
             id: String,

@@ -9,7 +9,6 @@ const CreatePage = () =>
     const [ pagehtmlContent, setHtmlContent ] = useState('Get started with the Edit Content button below!'); //placeholder
     const [ pageowner, setOwner ] = useState('ownerplaceholder'); //placeholder
     const [ pageeditors, setEditors ] = useState([]);
-    const [ pagemembers, setMembers ] = useState([]);
     const [ pageresources, setResources ] = useState([]);
 
     const navigate = useNavigate();
@@ -36,18 +35,6 @@ const CreatePage = () =>
         setEditors([...pageeditors.filter(editor => pageeditors.indexOf(editor) !== index)]);
     }
 
-    const onAddMember = (e) => {
-        if (e.key === "Enter" && e.target.value !== "") {
-            setMembers([...pagemembers, e.target.value]);
-            e.target.value = "";
-        }   
-    }
-
-    //TODO: fix duplicate slowness error
-    const onRemoveMember = (index) => {
-        setMembers([...pagemembers.filter(member => pagemembers.indexOf(member) !== index)]);
-    }
-
     const onCreate = (e) => {
         e.preventDefault();
 
@@ -57,7 +44,6 @@ const CreatePage = () =>
             htmlContent: pagehtmlContent,
             owner: pageowner,
             editors: pageeditors,
-            members: pagemembers,
             resources: pageresources                // < ^ ^ redundant but w/e
         }
 
@@ -172,23 +158,6 @@ const CreatePage = () =>
                                     <span>{editor}</span>
                                     <span  style={tagstyles.i}
                                         onClick={() => onRemoveEditor(index)}>⨂</span>
-                        </label>
-                    ))}
-                </div>
-                <h3 style={stylingObject.desc}>Add Members</h3>
-                <input  style={stylingObject.input}
-                        type="text"
-                        placeholder="Who can view the class content?"
-                        onKeyUp={onAddMember}
-                />
-                <div style={tagstyles.div}>
-                    <label style={{display: "inline-block"}}>Member List:</label>
-                    {pagemembers.map((member, index) => (
-                        <label     style={tagstyles.label}
-                                    key={index}>
-                                    <span>{member}</span>
-                                    <span  style={tagstyles.i}
-                                        onClick={() => onRemoveMember(index)}>⨂</span>
                         </label>
                     ))}
                 </div>
