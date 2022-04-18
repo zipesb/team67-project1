@@ -38,6 +38,10 @@ const ClassPage = () =>
         setEditing(!isEditing);
     }
 
+    const save = () => {
+        window.location.reload(false);
+    }
+
     useEffect(() => {
         loadClass(); //to initialize class data
         joinChat();
@@ -46,7 +50,7 @@ const ClassPage = () =>
 
     return (
         <div style={{ background: "linear-gradient(180deg, #27A3A7 0%, #365580 100%)", minHeight: "100vh", height: "auto" }}>
-            {isEditing  ? <PageEditor class={pageclass} onclick={toggleEdit} />
+            {isEditing  ? <PageEditor class={pageclass} onclick={save} />
                         : <PageViewer style={{backgroundColor: "white"}} class={pageclass} onclick={toggleEdit} allowEdit={isEditor}/>}
 
             <ResourceView class={pageclass} />
