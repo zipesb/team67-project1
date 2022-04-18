@@ -35,6 +35,11 @@
 }
 
 .coolblue-btn:hover {
+    background: linear-gradient(
+        0deg,
+        #1292c5 100%,
+        #365580 0%
+    );
     opacity:1;
 }
 
