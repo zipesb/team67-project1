@@ -18,7 +18,7 @@
     "express": "^4.17.3",
     "mongoose": "^6.2.7",
     "multer-gridfs-storage": "^5.0.2",
-    "socket.io": "^4.4.1"
+    "socket.io": "^4.4.1",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.0",
