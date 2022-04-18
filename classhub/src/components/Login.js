@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import axios from 'axios';
+import jwt_decode from "jwt-decode";
+
 class Login extends Component {
   constructor() {
     super();
@@ -12,16 +15,31 @@ class Login extends Component {
 onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
-onSubmit = e => {
+onSubmit = async e => {
     e.preventDefault();
 const userData = {
       email: this.state.email,
       password: this.state.password
     };
 console.log(userData);
-  };
+await axios.post('http://localhost:5000/api/users/login', userData)
+.then( response => {
+  console.log(response);
+  const { token } = response.data;
+  localStorage.setItem("jwtToken", token);
+  const decoded = jwt_decode(token);
+  localStorage.setItem("username", decoded.name);
+  console.log('token: ' + token + '\ndecoded: ' + decoded);
+})
+window.location.reload(false);
+};
+  
 render() {
     const { errors } = this.state;
+    if (localStorage.getItem("username")) {
+      return <Navigate to="/dashboard"></Navigate>
+    }
+
 return (
       <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">

@@ -10,6 +10,8 @@ import SearchBar from "./components/SearchBar";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import LandingPage from "./components/LandingPage";
+import Dashboard from "./components/Dashboard";
 
 function App() {
 
@@ -27,10 +29,11 @@ function App() {
       <div className="App">
         <Navbar/>
         <Routes>
+         <Route path="/" exact element={<LandingPage/>} />
          <Route path="/create" exact element={<CreatePage/>} />
          <Route path="/class/:id" element={<ClassPage/>} />
          <Route path="/search" element={<SearchBar placeholder = "Enter class name...." data = {listOfClasses} />} />
-         <Route path="/dashboard" exact element={<h1>really cool dashboard placeholder</h1>} />
+         <Route path="/dashboard" exact element={<Dashboard/>} />
          <Route path="/login" element={<Login />} />
          <Route path="/register" element={<Register />} />
        </Routes>
