@@ -3,21 +3,33 @@ import {FaStar} from 'react-icons/fa'
 import axios from 'axios'
 
 const StarRating = (props) =>{
-    
+
+
     const [rating, setRating] = useState (null)
-    const [DBRating, setDBRating] = useState([]);
-    const[buttonHide, setButtonHide] = useState(false);
+
+    const [currRatingAvg, setCurrRatingAvg] = useState(props.class.ratingAvg);
     const id = props.class._id
     const currRating = props.class.rating
-    state = {
-        disabled: false
-    }
-    const ratingpush = (e) => {
-        if(currRating !== undefined && rating !== null){
-        currRating.push(rating);
-        axios.post('http://localhost:5000/updateRating' , { newRating : currRating, id: id})
-        console.log(e.target.hidden)
-        this.setState({disabled: true})
+    
+
+    let i = 0;
+    let tempRating = 0
+    
+    
+     const ratingpush = (e) => {
+         if(currRating !== undefined && rating !== null){
+         currRating.push(rating);
+         axios.post('http://localhost:5000/updateRating' , { newRating : currRating, id: id})
+         console.log(e.target.hidden)
+     //   this.setState({disabled: true})
+        let tempSum = 0;
+        for(i = 0; i < currRating.length; i++){
+            tempSum+=currRating[i];
+        }
+        tempRating = tempSum / currRating.length;
+        console.log(tempRating, currRating.length);
+        axios.post("http://localhost:5000/updateRatingAvg", { newRating : tempRating, id: id})
+        setCurrRatingAvg(tempRating);
         }
     }
 
@@ -32,6 +44,7 @@ const StarRating = (props) =>{
                 
                 <label>
                   <input
+                    
                     type= "radio"
                     name = "rating"
                     value = {ratingVal}
@@ -47,8 +60,12 @@ const StarRating = (props) =>{
                 )
             })}
 
+            
             <div>
-             <button disabled= {this.state.disabled} onClick = {ratingpush}>Submit rating</button>
+             { <button onClick = {ratingpush}>Submit rating</button> }
+            </div>
+            <div>
+            <label onLoad = {() => {setCurrRatingAvg(props.class.ratingAvg)}}>Current Rating is {currRatingAvg}</label>
             </div>
         </div>
     )
