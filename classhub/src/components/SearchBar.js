@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import "./SearchBar.css"
+import "../styles/SearchBar.css"
 import SearchIcon from "@material-ui/icons/Search"
 import CloseIcon from "@material-ui/icons/Close"
 
 
-
+import "../styles/CoolBlue.css";
 
 function SearchBar({placeholder, data}) {
     
@@ -31,6 +31,7 @@ function SearchBar({placeholder, data}) {
     } 
 
     return (
+        <div style={{ justifyContent: 'center', height: "100vh" }} className="CoolBlue">
         <div className = "search">
             <div className="searchInputs">
                 <input type = "text" placeholder = {placeholder} value ={wordEntered} onChange = {handleFilter}/>
@@ -49,6 +50,7 @@ function SearchBar({placeholder, data}) {
                 })} 
             </div>
             )}
+        </div>
         </div>
     )
 }
