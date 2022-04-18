@@ -6,6 +6,7 @@ import io from "socket.io-client"
 import PageEditor from "./PageEditor"
 import PageViewer from "./PageViewer"
 import Chatbox from "./Chatbox";
+import StarRating from "./StarRating";
 
 const ClassPage = () => {
     const socket = io.connect("http://localhost:5001");
@@ -46,6 +47,7 @@ const ClassPage = () => {
 
             <ResourceView class={pageclass} />
             <Chatbox socket={socket} username={localStorage.getItem("username")} class_id={id} />
+            <StarRating class = {pageclass}/>
         </div>
     )
 
