@@ -4,47 +4,62 @@ import { Link } from "react-router-dom";
 import '../styles/CoolBlue.css';
 
 class Landing extends Component {
+    
     render() {
-      return (
+        /*if (localStorage.getItem("username")) {
+            return <Navigate to="/dashboard"></Navigate>
+        }*/
+
+        return (
         <div style={{ height: "100vh" }} className="CoolBlue">
-            <div>
-                <h4>
-                Filler
-                </h4>
+            <div style = {{
+            paddingLeft: "400px",
+            width: "1000px",
+            }}>
+                <h1 style={{
+                    textAlign: 'left',
+                    fontSize: 50,
+                    color: 'white',
+                    marginTop: "150px",
+                }}>
+                    ClassHub
+                </h1>
+                <h2 style={{
+                    textAlign: 'left',
+                    color: 'white',
+                }}>
+                    Join the learning revolution today
+                </h2>
             </div>
             <div style={{
-            background: "#999",
+            width: "600px",
             padding: "1%",
+            marginLeft: "auto", 
+            marginRight: "0",
             }}>
-                <div style={{
-                background: "#900",
-                padding: "5%",
-                }}>
-                    <Link
-                        to="/register"
-                        style={{
-                        color: 'white',
-                        fontSize: 32,
-                        }}
-                        className="coolblue-btn"
-                    >
-                        Sign up!
-                    </Link>
-                </div>
-                <div style={{
-                background: "#100",
-                }}>
-                    <Link
-                        to="/login"
-                        style={{
-                        color: 'white',
-                        fontSize: 32,
-                        }}
-                        className="coolblue-btn"
-                    >
-                        Log In
-                    </Link>
-                </div>
+                <Link
+                    to="/register"
+                    style={{
+                    color: 'white',
+                    fontSize: 32,
+                    margin: "20px",
+                    marginTop: "100px",
+                    }}
+                    className="coolblue-btn"
+                >
+                    Sign up!
+                </Link>
+                <Link
+                    to="/login"
+                    style={{
+                    color: 'white',
+                    fontSize: 32,
+                    margin: "20px",
+                    }}
+                    className="coolblue-btn"
+                >
+                    Log In
+                </Link>
             </div>
         </div>
       );

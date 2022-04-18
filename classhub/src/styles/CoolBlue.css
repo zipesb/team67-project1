@@ -1,22 +1,138 @@
 .CoolBlue {
-    background: linear-gradient(180deg, #27A3A7 0%, #365580 100%);
+    background: linear-gradient(180deg, #1292c5 0%, #365580 75%);
     display: flex;
 }
 
 .CoolBlue h1 {
-    color: white;
+    background: transparent;
+    background-color: transparent;
+    enable-background: 0%;
+}
+
+.center-col {
+    display:block;
+    align-items: center;
+    justify-content: center;
 }
 
 .coolblue-btn {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 125px;
+    display: flex;
     border: 4px solid rgba(255, 255, 255, 1);
     border-radius: 30px;
     background: linear-gradient(
         0deg,
-        rgba(31, 177, 207, 1) 0%,
-        rgba(37, 76, 204, 1) 100%
+        #1292c5 0%,
+        #365580 100%
     );
     color: rgba(255, 255, 255, 0.5);
     box-shadow: 4px 5px 0px 0px rgba(0, 0, 0, 0.3);
-    padding: 5%;
+    padding: 10px;
+    opacity:0.85;
 }
 
+.coolblue-btn:hover {
+    opacity:1;
+}
+
+.coolblue-btn:active {
+    background: linear-gradient(
+        0deg,
+        #1292c5 100%,
+        #365580 0%
+    );
+}
+
+.login-btn {
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+    display: flex;
+    border: 4px solid rgba(255, 255, 255, 1);
+    border-radius: 30px;
+    background: linear-gradient(
+        0deg,
+        #1292c5 0%,
+        #365580 100%
+    );
+    color: rgba(255, 255, 255, 0.5);
+    box-shadow: 4px 5px 0px 0px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    opacity:0.85;
+}
+
+.login-btn:hover {
+    background: linear-gradient(
+        0deg,
+        #1292c5 100%,
+        #365580 0%
+    );
+    opacity:1;
+}
+
+.login-btn:active {
+    background: linear-gradient(
+        0deg,
+        #1292c5 100%,
+        #365580 0%
+    );
+}
+
+input {
+    padding: 10px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #d6d1d5;
+}
+
+.class-box {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 40px;
+    width: 500px;
+    /*border: 4px solid black;*/
+    border-radius: 5px;
+    background: rgb(156, 156, 156);
+    box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.class-box a{
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 500px;
+    display: flex;
+    /* border: 4px solid black; */
+    border-radius: 5px;
+    background: transparent;
+    /* box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.3); */
+    /* padding: 10px; */
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.class-box a:hover {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* border: 4px solid black; */
+    border-radius: 5px;
+    background: transparent;
+    /* box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.3); */
+    /* padding: 10px; */
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    background-color: rgb(228, 123, 123);
+    border: 4px solid red;
+    margin-top: 10px
+}
