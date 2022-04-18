@@ -136,6 +136,12 @@ app.post('/updateRating', async(req, res) =>{
 
 
 
+app.get("/getOwnedClasses", (req, res)=>{
+  ClassModel.find({owner: req.query.owner})
+  .sort({ date: -1 })
+  .then(classes => res.json(classes));
+});
+
 // Passport middleware
 app.use(passport.initialize());
 // Passport config
