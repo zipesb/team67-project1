@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import "./SearchBar.css"
+import "../styles/SearchBar.css"
 import SearchIcon from "@material-ui/icons/Search"
 import CloseIcon from "@material-ui/icons/Close"
 

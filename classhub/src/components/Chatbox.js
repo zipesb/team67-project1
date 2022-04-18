@@ -3,7 +3,7 @@
  * youtube.com/watch?v=NU-HfZY3ATQ&ab_channel=PedroTech
  * 
  */
-import "./Chatbox.css"
+import "../styles/Chatbox.css"
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 
