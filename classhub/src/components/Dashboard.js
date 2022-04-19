@@ -6,7 +6,7 @@ import '../styles/CoolBlue.css';
 
 const Dashboard = () => {
     const [classList, setClassList] = useState([])
-    const loggedInUser = localStorage.getItem("username");
+    const loggedInUser = localStorage.getItem("username"); //user "authentication"
 
     axios.get("http://localhost:5000/getOwnedClasses", { params: { owner: loggedInUser } })
     .then(res => {

@@ -20,7 +20,8 @@ onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
 onSubmit = e => {
-    e.preventDefault();
+e.preventDefault();
+const successful = false;
 const newUser = {
       name: this.state.name,
       email: this.state.email,
@@ -30,7 +31,10 @@ const newUser = {
     };
 console.log(newUser);
 axios.post('http://localhost:5000/api/users/register', newUser)
-.then(response => console.log(response))
+.then(response => {
+  console.log(response);
+  successful = true;
+})
 .catch(err => {
   if (err.response) {
     console.log(err.response.data);
@@ -41,7 +45,9 @@ axios.post('http://localhost:5000/api/users/register', newUser)
     //console.log(err.response.headers);
   }
 })
-
+if (successful) {
+  window.location.reload(false);
+}
 };
 
 render() {
