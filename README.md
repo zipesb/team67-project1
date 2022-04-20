@@ -1,6 +1,9 @@
-# Team 67 - Product Based Software Engineering Project #1
+# Team 67 - Classhub
 
 Discussion Section: 24172	
+
+Description: ClassHub is a public learning platform where students, teachers and avid learners can set up pages for learning different skills or school subjects. These pages are open to contributors as designated by the page’s creator. In each class page, all members can submit relevant files– powerpoints, worksheets, answer keys, or instructional videos– to help each other achieve their educational goals. Chat rooms are available for each class page to allow students to converse with each other regarding their class curriculum. Additionally, users can manage their own accounts and pages they create, rate any class page on a 5-star system, and search for material on other class subjects.
+
 
 Team Members:
   Alex Cornide Huber, Ben Zipes, Jordan Hanley, Nikhil Giridharan
