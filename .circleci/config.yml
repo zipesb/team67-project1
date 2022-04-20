@@ -27,6 +27,15 @@ jobs:
           key: dependency-cache-{{ checksum "classhub/package-lock.json" }}
           paths:
             - ./node_modules
+      - restore_cache:
+          key: dependency-cache-{{ checksum "classhub/backend/package-lock.json" }}
+      - run:
+          name: Install Backend Dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "classhub/backend/package-lock.json" }}
+          paths:
+            - ./node_modules
       - run:
           name: Run the application
           command: node classhub/backend/server.js
