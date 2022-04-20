@@ -38,6 +38,8 @@ jobs:
       - run:
           name: pwd
           command: "pwd"
+          command: "ls"
+          command: "ls /classhub/backend"
       - run:
           name: Install Backend Dependencies
           path: ~/classhub/backend
@@ -49,6 +51,8 @@ jobs:
       - run:
           name: pwd
           command: "pwd"
+          command: "ls"
+          command: "ls /classhub/backend"
       - run:
           name: Run the application
           path: ~/classhub/backend
