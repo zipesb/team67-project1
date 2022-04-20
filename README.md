@@ -12,6 +12,8 @@ Steps to Run
 - Run ```git clone https://github.com/zipesb/team67-project1.git```
 - Navigate to the file with the path “team67-project1/classhub/backend/.env”
 - Replace the “ATLAS_URI” field with the URI from your MongoDB Atlas Server that you setup in the tutorial linked above
+- Navigate to the "keys.js" file at "team67-project1/classhub/backend/config/keys.js"
+- Replace the secretOrKey with your own private value for use with the JSON Web Token security measures
 - Navigate to the “team67-project1/classhub” directory
 - Run ```npm install```
 - Run ```npm start```
