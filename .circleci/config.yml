@@ -53,3 +53,6 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+  test-workflow:
+    jobs:
+      - build
