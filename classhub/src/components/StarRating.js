@@ -1,3 +1,5 @@
+//Component design was derived off of https://www.youtube.com/watch?v=eDw46GYAIDQ&t=91s
+
 import React, {useState} from 'react'
 import {FaStar} from 'react-icons/fa'
 import axios from 'axios'
