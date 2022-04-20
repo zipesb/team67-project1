@@ -39,7 +39,8 @@ jobs:
             - ./node_modules
       - run:
           name: Run the application
-          command: node classhub/backend/server.js
+          path: ~/team67-project1/classhub/backend
+          command: node server.js
           background: true
       - run:
           name: Run tests
