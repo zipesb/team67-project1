@@ -10,7 +10,7 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
-    working_directory: ~/../classhub
+    working_directory: ~/classhub
     docker:
       - image: circleci/node:12-browsers
     steps:
