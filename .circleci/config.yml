@@ -10,7 +10,7 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
-    working_directory: ~/team67-project1
+    working_directory: ~/repo
     docker:
       - image: circleci/node:12-browsers
     steps:
@@ -31,7 +31,7 @@ jobs:
           key: dependency-cache-{{ checksum "classhub/backend/package-lock.json" }}
       - run:
           name: Install Backend Dependencies
-          path: ~/team67-project1/classhub/backend
+          path: ~/classhub/backend
           command: npm install
       - save_cache:
           key: dependency-cache-{{ checksum "classhub/backend/package-lock.json" }}
@@ -39,7 +39,7 @@ jobs:
             - ./node_modules
       - run:
           name: Run the application
-          path: ~/team67-project1/classhub/backend
+          path: ~/classhub/backend
           command: node server.js
           background: true
       - run:
