@@ -16,16 +16,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: pwd
-          command: "pwd"
-      - run:
           name: Update NPM
           command: "sudo npm install -g npm"
       - restore_cache:
           key: dependency-cache-{{ checksum "classhub/package-lock.json" }}
-      - run:
-          name: pwd
-          command: "pwd"
       - run:
           name: Install Dependencies
           command: npm install
@@ -37,9 +31,7 @@ jobs:
           key: dependency-cache-{{ checksum "classhub/backend/package-lock.json" }}
       - run:
           name: pwd
-          command: "pwd"
-          command: "ls"
-          command: "ls /classhub/backend"
+          command: "pwd && ls && ls classhub/backend"
       - run:
           name: Install Backend Dependencies
           path: ~/classhub/backend
@@ -48,11 +40,6 @@ jobs:
           key: dependency-cache-{{ checksum "classhub/backend/package-lock.json" }}
           paths:
             - ./node_modules
-      - run:
-          name: pwd
-          command: "pwd"
-          command: "ls"
-          command: "ls /classhub/backend"
       - run:
           name: Run the application
           path: ~/classhub/backend
