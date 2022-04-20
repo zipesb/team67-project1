@@ -10,7 +10,7 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
-    working_directory: ~/classhub
+    working_directory: ~/team67-project1
     docker:
       - image: circleci/node:12-browsers
     steps:
@@ -29,7 +29,7 @@ jobs:
             - ./node_modules
       - run:
           name: Run the application
-          command: node backend/server.js
+          command: node server.js
           background: true
       - run:
           name: Run tests
