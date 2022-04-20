@@ -19,17 +19,17 @@ jobs:
           name: Update NPM
           command: "sudo npm install -g npm"
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "classhub/package-lock.json" }}
       - run:
           name: Install Dependencies
           command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "classhub/package-lock.json" }}
           paths:
             - ./node_modules
       - run:
           name: Run the application
-          command: node server.js
+          command: node classhub/backend/server.js
           background: true
       - run:
           name: Run tests
