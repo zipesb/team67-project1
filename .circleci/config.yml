@@ -19,16 +19,16 @@ jobs:
           name: Update NPM
           command: "sudo npm install -g npm"
       - restore_cache:
-          key: dependency-cache-{{ checksum "classhub/package-lock.json" }}
+          key: dependency-cache-{{ checksum "repo/classhub/package-lock.json" }}
       - run:
           name: Install Dependencies
           command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "classhub/package-lock.json" }}
+          key: dependency-cache-{{ checksum "repo/classhub/package-lock.json" }}
           paths:
             - ./node_modules
       - restore_cache:
-          key: dependency-cache-{{ checksum "classhub/backend/package-lock.json" }}
+          key: dependency-cache-{{ checksum "repo/classhub/backend/package-lock.json" }}
       - run:
           name: pwd
           command: "pwd && ls && ls classhub/backend"
@@ -37,12 +37,12 @@ jobs:
           path: ~/classhub/backend
           command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "classhub/backend/package-lock.json" }}
+          key: dependency-cache-{{ checksum "repo/classhub/backend/package-lock.json" }}
           paths:
             - ./node_modules
       - run:
           name: Run the application
-          path: ~/classhub/backend
+          path: ~/repo/classhub/backend
           command: node server.js
           background: true
       - run:
