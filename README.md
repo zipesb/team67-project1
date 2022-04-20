@@ -21,3 +21,4 @@ Steps to Run
 - Run ```npm install```
 - Run ```nodemon server.js```
 - Open a local browser and navigate to “http://localhost:3000/” in the address bar
+- To run the end-to-end tests implemented in puppeteer run “npm test” from the “team67-project1/classhub” directory
