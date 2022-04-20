@@ -6,7 +6,7 @@ import '../styles/CoolBlue.css';
 
 const Dashboard = () => {
     const [classList, setClassList] = useState([])
-    const loggedInUser = localStorage.getItem("username");
+    const loggedInUser = localStorage.getItem("username"); //user "authentication"
 
     axios.get("http://localhost:5000/getOwnedClasses", { params: { owner: loggedInUser } })
     .then(res => {
@@ -36,7 +36,7 @@ const Dashboard = () => {
     return (
         <div className="CoolBlue" 
         style={{ justifyContent: 'center', display:"block", height: "100vh", paddingTop:'3rem', paddingBottom:'2rem'}}>
-            <h1>
+            <h1 id="welcomeMessage">
                 You're logged in, nice to see you <u>{loggedInUser}</u>
             </h1>
             <div style={{justifyContent: 'center'}}>

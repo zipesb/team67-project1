@@ -12,7 +12,9 @@ class Landing extends Component {
 
         return (
         <div style={{ height: "100vh" }} className="CoolBlue">
-            <div style = {{
+            <div
+            id="landingpageText" 
+            style = {{
             paddingLeft: "400px",
             width: "1000px",
             }}>
@@ -46,6 +48,7 @@ class Landing extends Component {
                     marginTop: "100px",
                     }}
                     className="coolblue-btn"
+                    id="registerButton"
                 >
                     Sign up!
                 </Link>
@@ -57,6 +60,7 @@ class Landing extends Component {
                     margin: "20px",
                     }}
                     className="coolblue-btn"
+                    id="loginButton"
                 >
                     Log In
                 </Link>

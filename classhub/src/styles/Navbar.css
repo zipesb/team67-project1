@@ -58,7 +58,7 @@
   }
 
   .nav-landingpage:hover {
-    background: #818881;
+    background: transparent;
     margin-right: 10vw;
     color: white;
     font-size: 25px;

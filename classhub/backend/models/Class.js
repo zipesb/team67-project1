@@ -27,6 +27,14 @@ const ClassSchema = new mongoose.Schema({
             filename: String
         }],
         required: false
+    },
+    rating: {
+        type:[Number],
+        required: false,
+    },
+    ratingAvg: {
+        type: Number,
+        required: false,
     }
 }) 
 
