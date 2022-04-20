@@ -56,7 +56,7 @@ render() {
 return (
       <div style={{ justifyContent: 'center', height: "100vh" }} className="CoolBlue">
         <div style={{ marginTop: "4rem", justifyContent: 'center', }}>
-          <h1 style={{marginBottom: "0"}}>
+          <h1 style={{marginBottom: "0"}} id="loginBelow">
             Login below
           </h1>
           <p style={{marginTop: "0", marginBottom: "3rem"}}>
@@ -92,11 +92,12 @@ return (
                   margin: '0 auto',
                 }}
                 className="login-btn"
+                id="submitButton"
                 type="submit"
               >
                 Login
               </button>
-              {(errors) ? <div className="error-message"><p>ERRORS:{errors}</p></div> : <div></div>}
+              {(errors) ? <div id="errorMessages" className="error-message"><p>ERRORS:{errors}</p></div> : <div></div>}
             </div>
           </form>
         </div>

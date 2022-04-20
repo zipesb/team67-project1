@@ -36,7 +36,7 @@ const Dashboard = () => {
     return (
         <div className="CoolBlue" 
         style={{ justifyContent: 'center', display:"block", height: "100vh", paddingTop:'3rem', paddingBottom:'2rem'}}>
-            <h1>
+            <h1 id="welcomeMessage">
                 You're logged in, nice to see you <u>{loggedInUser}</u>
             </h1>
             <div style={{justifyContent: 'center'}}>

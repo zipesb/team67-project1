@@ -21,7 +21,6 @@ onChange = e => {
   };
 onSubmit = e => {
 e.preventDefault();
-const successful = false;
 const newUser = {
       name: this.state.name,
       email: this.state.email,
@@ -33,7 +32,7 @@ console.log(newUser);
 axios.post('http://localhost:5000/api/users/register', newUser)
 .then(response => {
   console.log(response);
-  successful = true;
+  window.location.reload(false);
 })
 .catch(err => {
   if (err.response) {
@@ -45,9 +44,6 @@ axios.post('http://localhost:5000/api/users/register', newUser)
     //console.log(err.response.headers);
   }
 })
-if (successful) {
-  window.location.reload(false);
-}
 };
 
 render() {
@@ -62,7 +58,7 @@ return (
           <div>
             <Link to="/">Back to home</Link>
             <div style={{ marginTop: "4rem", justifyContent: 'center', }}>
-              <h1 style={{marginBottom: "0"}}>
+              <h1 style={{marginBottom: "0"}} id="registerBelow">
                 Register below
               </h1>
               <p style={{marginTop: "0", marginBottom: "3rem"}}>
@@ -127,10 +123,11 @@ return (
                   }}
                   className="login-btn"
                   type="submit"
+                  id="submitButton"
                 >
                   Sign up
                 </button>
-                {(errors) ? <div className="error-message"><p>ERRORS:{errors}</p></div> : <div></div>}
+                {(errors) ? <div id="errorMessages" className="error-message"><p>ERRORS:{errors}</p></div> : <div></div>}
               </div>
             </form>
           </div>
