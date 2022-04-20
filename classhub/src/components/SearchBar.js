@@ -1,3 +1,5 @@
+// Code was derived based off of https://www.youtube.com/watch?v=x7niho285qs&t=667s
+
 import React, {useState, useEffect} from 'react'
 import "../styles/SearchBar.css"
 import SearchIcon from "@material-ui/icons/Search"
