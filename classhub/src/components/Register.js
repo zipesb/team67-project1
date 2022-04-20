@@ -20,7 +20,7 @@ onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
 onSubmit = e => {
-    e.preventDefault();
+e.preventDefault();
 const newUser = {
       name: this.state.name,
       email: this.state.email,
@@ -30,7 +30,10 @@ const newUser = {
     };
 console.log(newUser);
 axios.post('http://localhost:5000/api/users/register', newUser)
-.then(response => console.log(response))
+.then(response => {
+  console.log(response);
+  window.location.reload(false);
+})
 .catch(err => {
   if (err.response) {
     console.log(err.response.data);
@@ -41,7 +44,6 @@ axios.post('http://localhost:5000/api/users/register', newUser)
     //console.log(err.response.headers);
   }
 })
-
 };
 
 render() {
@@ -56,7 +58,7 @@ return (
           <div>
             <Link to="/">Back to home</Link>
             <div style={{ marginTop: "4rem", justifyContent: 'center', }}>
-              <h1 style={{marginBottom: "0"}}>
+              <h1 style={{marginBottom: "0"}} id="registerBelow">
                 Register below
               </h1>
               <p style={{marginTop: "0", marginBottom: "3rem"}}>
@@ -121,10 +123,11 @@ return (
                   }}
                   className="login-btn"
                   type="submit"
+                  id="submitButton"
                 >
                   Sign up
                 </button>
-                {(errors) ? <div className="error-message"><p>ERRORS:{errors}</p></div> : <div></div>}
+                {(errors) ? <div id="errorMessages" className="error-message"><p>ERRORS:{errors}</p></div> : <div></div>}
               </div>
             </form>
           </div>

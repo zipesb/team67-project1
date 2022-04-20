@@ -16,7 +16,7 @@ const Dashboard = () => {
     return (
         <div>
             {handleLogout()}
-            <Navigate to="/landingpage"></Navigate>
+            <Navigate to="/"></Navigate>
         </div>
     );
 }

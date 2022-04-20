@@ -92,8 +92,6 @@ app.post("/updateClassContent", async (req, res) => {
 app.post('/updateRating', async(req, res) =>{
   const newRating = req.body.newRating
   const id = req.body.id
-   
-  await sleep (1000)
   
     ClassModel.findByIdAndUpdate(id, {"rating" : newRating}, function(error, result){
      if (error) {
@@ -115,8 +113,6 @@ app.post('/updateRating', async(req, res) =>{
  app.post('/updateRatingAvg', async(req, res) =>{
   const newRating = req.body.newRating
   const id = req.body.id
-  
-  await sleep (1000)
  
     ClassModel.findByIdAndUpdate(id, {"ratingAvg" : newRating}, function(error, result){
      if (error) {
