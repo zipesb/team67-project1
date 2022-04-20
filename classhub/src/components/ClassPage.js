@@ -49,7 +49,7 @@ const ClassPage = () =>
 
 
     return (
-        <div style={{ background: "linear-gradient(180deg, #27A3A7 0%, #365580 100%)", minHeight: "100vh", height: "auto" }}>
+        <div style={{ background: "linear-gradient(180deg, #1292c5 0%, #365580 75%)", minHeight: "100vh", height: "auto" }}>
             {isEditing  ? <PageEditor class={pageclass} onclick={save} />
                         : <PageViewer style={{backgroundColor: "white"}} class={pageclass} onclick={toggleEdit} allowEdit={isEditor}/>}
 
