@@ -1,6 +1,6 @@
 .NavbarItems {
-    background: #27A3A7 0%;
-    height: 85px;
+    background: #1292c5 0%;
+    height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,13 +13,13 @@
     }
   
   .NavbarItems h1 {
-    margin-right: 10vw;
+    margin-right: 0vw;
     color: white;
-    font-size: 25px;
+    font-size: 5vw;
   }
 
   .navbar-ul {
-    width: 80%;
+    width: 90%;
     float: left;
     list-style: none;
     margin: 0px;
@@ -28,9 +28,8 @@
   li {
     display: inline;
     list-style: none;
-    font-size: 18px;
+    font-size: 2vmin;
     padding: 10px;
-    line-height: 80px;
   }
   .nav-links {
     color: white;
