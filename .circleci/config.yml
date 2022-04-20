@@ -8,46 +8,46 @@ orbs:
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
-jobs:
-  build:
-    working_directory: ~/repo
-    docker:
-      - image: circleci/node:12-browsers
-    steps:
-      - checkout
-      - run:
-          name: Update NPM
-          command: "sudo npm install -g npm"
-      - restore_cache:
-          key: dependency-cache-{{ checksum "repo/classhub/package-lock.json" }}
-      - run:
-          name: Install Dependencies
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "repo/classhub/package-lock.json" }}
-          paths:
-            - ./node_modules
-      - restore_cache:
-          key: dependency-cache-{{ checksum "repo/classhub/backend/package-lock.json" }}
-      - run:
-          name: pwd
-          command: "pwd && ls && ls classhub/backend"
-      - run:
-          name: Install Backend Dependencies
-          path: ~/classhub/backend
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "repo/classhub/backend/package-lock.json" }}
-          paths:
-            - ./node_modules
-      - run:
-          name: Run the application
-          path: ~/repo/classhub/backend
-          command: node server.js
-          background: true
-      - run:
-          name: Run tests
-          command: npm run test
+# jobs:
+#   build:
+#     working_directory: ~/repo
+#     docker:
+#       - image: circleci/node:12-browsers
+#     steps:
+#       - checkout
+#       - run:
+#           name: Update NPM
+#           command: "sudo npm install -g npm"
+#       - restore_cache:
+#           key: dependency-cache-{{ checksum "repo/classhub/package-lock.json" }}
+#       - run:
+#           name: Install Dependencies
+#           command: npm install
+#       - save_cache:
+#           key: dependency-cache-{{ checksum "repo/classhub/package-lock.json" }}
+#           paths:
+#             - ./node_modules
+#       - restore_cache:
+#           key: dependency-cache-{{ checksum "repo/classhub/backend/package-lock.json" }}
+#       - run:
+#           name: pwd
+#           command: "pwd && ls && ls classhub/backend"
+#       - run:
+#           name: Install Backend Dependencies
+#           path: ~/classhub/backend
+#           command: npm install
+#       - save_cache:
+#           key: dependency-cache-{{ checksum "repo/classhub/backend/package-lock.json" }}
+#           paths:
+#             - ./node_modules
+#       - run:
+#           name: Run the application
+#           path: ~/repo/classhub/backend
+#           command: node server.js
+#           background: true
+#       - run:
+#           name: Run tests
+#           command: npm run test
   say-hello:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
